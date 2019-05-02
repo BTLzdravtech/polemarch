@@ -17,7 +17,10 @@ INSTALLED_APPS += [
 # Additional middleware and auth
 MIDDLEWARE_CLASSES += [
     '{}.main.middleware.PolemarchHeadersMiddleware'.format(VST_PROJECT_LIB_NAME),
+    '{}.main.auth.oauth2proxy.CustomHeaderMiddleware'.format(VST_PROJECT_LIB_NAME),
 ]
+
+AUTHENTICATION_BACKENDS.insert(0, 'django.contrib.auth.backends.RemoteUserBackend')
 
 AUTH_PASSWORD_VALIDATORS += [
     {
